@@ -1,5 +1,7 @@
 # my-vue-demo
 
+## node 20.13.1
+
 ## Project setup
 ```
 pnpm install
