@@ -22,5 +22,13 @@ pnpm run build
 pnpm run lint
 ```
 
+
+### Sync your web code to your native project
+```
+npx cap sync
+```
+
+
+
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
