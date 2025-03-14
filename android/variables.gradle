@@ -1,5 +1,7 @@
 ext {
-    minSdkVersion = 23
+//    minSdkVersion = 23
+    //条形码扫描仪插件要求 Android SDK 目标最低为 26
+    minSdkVersion = 26
     compileSdkVersion = 35
     targetSdkVersion = 35
     androidxActivityVersion = '1.9.2'

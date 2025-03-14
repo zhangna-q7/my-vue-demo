@@ -12,15 +12,19 @@
   "dependencies": {
     "@capacitor/android": "7.0.1",
     "@capacitor/app": "7.0.0",
+    "@capacitor/barcode-scanner": "^2.0.1",
     "@capacitor/camera": "^7.0.0",
     "@capacitor/cli": "7.0.1",
     "@capacitor/core": "7.0.1",
+    "@capacitor/filesystem": "^7.0.0",
+    "@capacitor/geolocation": "^7.1.1",
     "@capacitor/haptics": "7.0.0",
     "@capacitor/ios": "7.0.1",
     "@capacitor/keyboard": "7.0.0",
     "@capacitor/status-bar": "7.0.0",
     "@ionic/pwa-elements": "^3.3.0",
     "core-js": "^3.8.3",
+    "vconsole": "^3.15.1",
     "vue": "^3.2.13"
   },
   "devDependencies": {
