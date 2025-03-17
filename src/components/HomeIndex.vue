@@ -14,9 +14,11 @@
   </p>
 
   <h3>3、选文件</h3>
-  <button class="button" @click="selectFile()">选择文件</button>
-
-
+  <p><button class="button" @click="pickFile()">pick a file</button></p>
+  <p><button class="button" @click="openFile()">open file</button></p>
+  <p class="open-file">
+    open a file ：{{fileData}}
+  </p>
   <h3 class="green">4、定位</h3>
   <p>
     <button class="button" @click="getCurrPosition()">获取当前位置</button>
@@ -27,14 +29,14 @@
 import {Camera, CameraResultType, CameraSource} from '@capacitor/camera';
 import { ref } from 'vue'
 import {Geolocation} from "@capacitor/geolocation";
-import {Directory, Encoding, Filesystem} from "@capacitor/filesystem";
 import {
   CapacitorBarcodeScannerCameraDirection, CapacitorBarcodeScannerScanOrientation,
   CapacitorBarcodeScannerTypeHintALLOption
 } from "@capacitor/barcode-scanner/dist/esm/definitions";
 import {CapacitorBarcodeScanner} from "@capacitor/barcode-scanner";
-
-let imageUrl = ref("../../assets/logo.png");
+// import {FileOpener} from "@capacitor-community/file-opener";
+import { FilePicker } from '@capawesome/capacitor-file-picker';
+let imageUrl = ref("");
 let scannerData = ref(null);
 let position = ref(
     {
@@ -43,6 +45,7 @@ let position = ref(
     }
 );
 
+let fileData = ref(null);
 //拍照功能
 async function takePicture (){
   const photo = await Camera.getPhoto({
@@ -71,34 +74,34 @@ async function scanBarcode(){
   );
   scannerData.value = scanBarcodeResult.ScanResult;
   console.log("scanResult:::::",scanBarcodeResult.ScanResult);
-  // alert("扫描结果===="+scanResult.content)
 }
+async function pickFile(){
+    const result = await FilePicker.pickFiles();
+    const file = result.files[0];
 
-
-/*export default {
-  methods: {
-    async scanBarcode() {
-      try {
-        const result = await BarcodeScanner.startScan({ allowedFormats: ['qr-code'] }); // 只扫描二维码
-        console.log('Scanned Barcode', result);
-        alert(`Barcode data: ${result.content}`); // 显示扫描结果
-      } catch (error) {
-        console.error('Error scanning barcode', error);
-      } finally {
-        BarcodeScanner.stopScan(); // 停止扫描以释放相机资源
-      }
+    const formData = new FormData();
+    if (file.blob) {
+      const rawFile = new File(file.blob, file.name, {
+        type: file.mimeType,
+      });
+      formData.append('file', rawFile, file.name);
     }
-  }
-}*/
-async function selectFile(){
-  const contents = await Filesystem.readFile({
-    path: 'secrets/text.txt',
-    directory: Directory.Documents,
-    encoding: Encoding.UTF8,
-  });
-
-  console.log('secrets:', contents);
 }
+
+ async function openFile() {
+   const result = await FilePicker.pickFiles({
+     types: ['application/pdf'],
+   });
+
+   console.log('pdf打开文件：',result);
+   const fileTemp = result?.files?.[0];
+   fileData.value = JSON.stringify({
+     name:fileTemp.name,
+     path: fileTemp.path
+   });
+
+   fileData.value = JSON.stringify(fileTemp);
+ }
 async function getCurrPosition(){
   let currentPosition = await Geolocation.getCurrentPosition({
     timeout: 20000, // 设置 20 秒的超时
@@ -127,8 +130,15 @@ async function getCurrPosition(){
   cursor: pointer;
 }
 
+.open-file{
+  width: 93%;
+  border: 1px solid #2c3e50;
+  padding: 10px;
+  word-wrap: break-word;
+  text-align: left;
+}
 .img{
-  border: 1px solid red;
+  border: 1px solid #fff;
   width: 100px;
   height: 100px;
 }
