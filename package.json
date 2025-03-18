@@ -10,7 +10,6 @@
     "ionic:serve": "npm run serve"
   },
   "dependencies": {
-    "@capacitor-community/file-opener": "file:..",
     "@capacitor/android": "7.0.1",
     "@capacitor/app": "7.0.0",
     "@capacitor/barcode-scanner": "^2.0.1",

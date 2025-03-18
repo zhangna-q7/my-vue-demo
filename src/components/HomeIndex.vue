@@ -14,7 +14,7 @@
   </p>
 
   <h3>3、选文件</h3>
-  <p><button class="button" @click="pickFile()">pick a file</button></p>
+<!--  <p><button class="button" @click="pickFile()">pick a file</button></p>-->
   <p><button class="button" @click="openFile()">open file</button></p>
   <p class="open-file">
     open a file ：{{fileData}}
@@ -34,7 +34,6 @@ import {
   CapacitorBarcodeScannerTypeHintALLOption
 } from "@capacitor/barcode-scanner/dist/esm/definitions";
 import {CapacitorBarcodeScanner} from "@capacitor/barcode-scanner";
-// import {FileOpener} from "@capacitor-community/file-opener";
 import { FilePicker } from '@capawesome/capacitor-file-picker';
 let imageUrl = ref("");
 let scannerData = ref(null);
@@ -66,26 +65,14 @@ async function scanBarcode(){
   let scanBarcodeResult = await CapacitorBarcodeScanner.scanBarcode(
       {
         hint: CapacitorBarcodeScannerTypeHintALLOption.ALL,
-        scanButton: true,
-        scanText: '扫我呀',
+        // scanButton: true,
+        // scanText: '扫我呀',
         cameraDirection:CapacitorBarcodeScannerCameraDirection.BACK,
         scanOrientation:CapacitorBarcodeScannerScanOrientation.PORTRAIT,
       }
   );
   scannerData.value = scanBarcodeResult.ScanResult;
   console.log("scanResult:::::",scanBarcodeResult.ScanResult);
-}
-async function pickFile(){
-    const result = await FilePicker.pickFiles();
-    const file = result.files[0];
-
-    const formData = new FormData();
-    if (file.blob) {
-      const rawFile = new File(file.blob, file.name, {
-        type: file.mimeType,
-      });
-      formData.append('file', rawFile, file.name);
-    }
 }
 
  async function openFile() {
