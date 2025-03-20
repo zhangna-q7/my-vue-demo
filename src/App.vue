@@ -1,18 +1,18 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" hidden="hidden">
-  <HelloWorld msg="Welcome to Your Vue.js App" hidden="hidden"/>
-  <HomeIndex/>
+  <img alt="Vue logo" src="./assets/logo.png">
+  <HelloWorld msg="Welcome to Your Vue.js App"/>
+<!--  <HomeIndex/>-->
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
-import HomeIndex from './components/HomeIndex.vue'
+// import HomeIndex from './components/HomeIndex.vue'
 
 export default {
   name: 'App',
   components: {
     HelloWorld,
-    HomeIndex
+    // HomeIndex
   }
 }
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <h3>1、扫码</h3>
+<!--  <h3>1、扫码</h3>
   <p>
     <button class="button" @click="scanBarcode()">扫描二维码</button>
   </p>
@@ -14,7 +14,7 @@
   </p>
 
   <h3>3、选文件</h3>
-<!--  <p><button class="button" @click="pickFile()">pick a file</button></p>-->
+&lt;!&ndash;  <p><button class="button" @click="pickFile()">pick a file</button></p>&ndash;&gt;
   <p><button class="button" @click="openFile()">open file</button></p>
   <p class="open-file">
     open a file ：{{fileData}}
@@ -23,10 +23,10 @@
   <p>
     <button class="button" @click="getCurrPosition()">获取当前位置</button>
   </p>
-  <p>当前位置为：经度：{{position.latitude}};纬度：{{position.longitude}}</p>
+  <p>当前位置为：经度：{{position.latitude}};纬度：{{position.longitude}}</p>-->
 </template>
 <script setup>
-import {Camera, CameraResultType, CameraSource} from '@capacitor/camera';
+/*import {Camera, CameraResultType, CameraSource} from '@capacitor/camera';
 import { ref } from 'vue'
 import {Geolocation} from "@capacitor/geolocation";
 import {
@@ -102,7 +102,7 @@ async function getCurrPosition(){
   };
   console.log("position.value：：：：：",position.value)
 
-}
+}*/
 </script>
 <style scoped>
 .button {
