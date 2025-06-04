@@ -1,5 +1,30 @@
 {
   "appId": "my.vue.demo",
   "appName": "民防志願者",
-  "webDir": "dist"
+  "webDir": "dist",
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 3000
+    }
+  },
+  "android": {
+    "allowMixedContent": true,
+    "splash": {
+      "images": [
+        {
+          "src": "public/res/screen/android/drawable-land-xxxhdpi-screen.png",
+          "density": "land-xxxhdpi"
+        },
+        {
+          "src": "public/res/screen/android/drawable-port-xxxhdpi-screen.png",
+          "density": "port-xxxhdpi"
+        }
+      ]
+    },
+    "icon": {
+      "foreground": "public/res/icon/android/foreground.png",
+      "background": "public/res/icon/android/background.png"
+    }
+  }
 }
+

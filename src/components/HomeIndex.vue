@@ -77,7 +77,7 @@ async function scanBarcode(){
 
  async function openFile() {
    const result = await FilePicker.pickFiles({
-     types: ['application/pdf'],
+     types: ['video/*'],
    });
 
    console.log('pdf打开文件：',result);

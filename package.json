@@ -5,6 +5,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "cap:sync": "npx cap sync",
     "lint": "vue-cli-service lint",
     "ionic:build": "npm run build",
     "ionic:serve": "npm run serve"

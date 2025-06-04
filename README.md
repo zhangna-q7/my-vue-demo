@@ -1,6 +1,6 @@
 # my-vue-demo
 
-## node 20.13.1
+## node 20.18.1
 
 ## Project setup
 ```
